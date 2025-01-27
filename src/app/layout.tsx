@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://meowpresso.vercel.app',
+    url: 'https://meowpresso-nfzq.vercel.app/',
     siteName: 'Meowpresso',
     title: 'Meowpresso - Your Coffee Recipe Companion',
     description: 'Discover and brew perfect coffee with our curated recipes and guides',
@@ -71,12 +71,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-iconpng" />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" content="#4A2C2A" />
+        
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen
         bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200`}

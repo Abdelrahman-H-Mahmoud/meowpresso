@@ -41,7 +41,7 @@ export const recipes: Recipe[] = [
     difficulty: 'Medium',
     prepTime: '5 minutes',
     categories: [RecipeCategory.HOT_COFFEE, RecipeCategory.TRADITIONAL],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '2',
@@ -62,7 +62,7 @@ export const recipes: Recipe[] = [
     difficulty: 'Easy',
     prepTime: '12-24 hours',
     categories: [RecipeCategory.COLD_COFFEE, RecipeCategory.BEGINNER],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '3',
@@ -85,7 +85,7 @@ export const recipes: Recipe[] = [
     difficulty: 'Medium',
     prepTime: '10 minutes',
     categories: [RecipeCategory.SPECIALTY, RecipeCategory.ESPRESSO],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '4',
@@ -107,7 +107,7 @@ export const recipes: Recipe[] = [
     difficulty: 'Easy',
     prepTime: '15 minutes',
     categories: [RecipeCategory.COLD_COFFEE, RecipeCategory.TRADITIONAL],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '5',
@@ -130,7 +130,7 @@ export const recipes: Recipe[] = [
     difficulty: 'Easy',
     prepTime: '2 minutes',
     categories: [RecipeCategory.HOT_COFFEE, RecipeCategory.QUICK],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '6',
@@ -153,7 +153,7 @@ export const recipes: Recipe[] = [
     difficulty: 'Medium',
     prepTime: '5 minutes',
     categories: [RecipeCategory.ESPRESSO, RecipeCategory.SPECIALTY],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '7',
@@ -174,7 +174,7 @@ export const recipes: Recipe[] = [
     difficulty: 'Easy',
     prepTime: '3 minutes',
     categories: [RecipeCategory.ESPRESSO, RecipeCategory.QUICK],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '8',
@@ -198,6 +198,6 @@ export const recipes: Recipe[] = [
     difficulty: 'Medium',
     prepTime: '7 minutes',
     categories: [RecipeCategory.ESPRESSO, RecipeCategory.SPECIALTY],
-    imageUrl: '/images/coffee.jpeg'
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ]; 

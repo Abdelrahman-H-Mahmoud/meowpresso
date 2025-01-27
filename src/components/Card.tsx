@@ -17,7 +17,7 @@ interface CardProps {
 export function Card({ id, title, description, imageUrl, categories, metadata }: CardProps) {
   const Content = (
     <>
-      <div className="relative h-48 w-full group-hover:h-52 transition-all duration-300 overflow-hidden">
+      <div className="relative h-48 sm:h-52 w-full group-hover:h-52 transition-all duration-300 overflow-hidden">
         <Image
           src={imageUrl || '/images/default-recipe.jpg'}
           alt={title}
@@ -40,14 +40,14 @@ export function Card({ id, title, description, imageUrl, categories, metadata }:
           </div>
         </div>
       </div>
-      <div className="p-6 bg-white dark:bg-gray-800 transition-colors duration-200">
+      <div className="p-4 sm:p-6 bg-white dark:bg-gray-800 transition-colors duration-200">
         <h2 className="text-xl font-semibold text-coffee-dark dark:text-white mb-2 
                       group-hover:text-brown-600 dark:group-hover:text-accent-400 transition-colors">
           {title}
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{description}</p>
         {metadata && (
-          <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0 text-sm text-gray-500 dark:text-gray-400">
             {metadata.map((item, index) => (
               <span key={index} className="flex items-center gap-1">
                 <span className="font-medium">{item.label}:</span>

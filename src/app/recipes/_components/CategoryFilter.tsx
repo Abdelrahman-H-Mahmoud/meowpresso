@@ -16,8 +16,8 @@ export function CategoryFilter({
   isLoading = false 
 }: CategoryFilterProps) {
   return (
-    <div className="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-colors duration-200">
-      <div className="flex justify-between items-center mb-6">
+    <div className="mb-4 sm:mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 sm:p-6 transition-colors duration-200">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 mb-4 sm:mb-6">
         <div>
           <h2 className="text-xl font-semibold text-coffee-dark dark:text-accent-400">Filter by Category</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -39,7 +39,7 @@ export function CategoryFilter({
           </button>
         )}
       </div>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2 sm:gap-3">
         {Object.values(RecipeCategory).map((category) => (
           <button
             key={category}

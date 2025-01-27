@@ -25,9 +25,9 @@ export default function RecipeDetailsPage({ params }: { params: Promise<{ id: st
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-4 sm:py-8">
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-        <div className="relative h-64 md:h-96">
+        <div className="relative h-48 sm:h-64 md:h-96">
           <Image
             src={recipe.imageUrl || '/images/default-recipe.jpg'}
             alt={recipe.title}
@@ -36,7 +36,7 @@ export default function RecipeDetailsPage({ params }: { params: Promise<{ id: st
           />
         </div>
 
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           <div className="flex flex-wrap gap-2 mb-6">
             {recipe.categories.map((category, index) => (
               <span
@@ -48,10 +48,12 @@ export default function RecipeDetailsPage({ params }: { params: Promise<{ id: st
             ))}
           </div>
 
-          <h1 className="text-4xl font-bold text-coffee-dark dark:text-white mb-4">{recipe.title}</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-coffee-dark dark:text-white mb-4">
+            {recipe.title}
+          </h1>
           <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg">{recipe.description}</p>
 
-          <div className="flex gap-8 mb-8 text-gray-600 dark:text-gray-300">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-8 text-gray-600 dark:text-gray-300">
             <div className="flex items-center gap-2">
               <span className="font-semibold">Difficulty:</span>
               <span>{recipe.difficulty}</span>
@@ -62,7 +64,7 @@ export default function RecipeDetailsPage({ params }: { params: Promise<{ id: st
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h2 className="text-2xl font-semibold text-coffee-dark dark:text-white mb-4">Ingredients</h2>
               <ul className="space-y-2 text-gray-600 dark:text-gray-300">

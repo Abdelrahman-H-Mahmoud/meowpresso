@@ -2,11 +2,12 @@ import { recipes } from '@/data/recipes';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const recipe = recipes.find(r => r.id === params.id);
+    const { id } = await params;
+    const recipe = recipes.find(r => r.id === id);
     
     if (!recipe) {
       return NextResponse.json(
@@ -17,6 +18,7 @@ export async function GET(
 
     return NextResponse.json({ recipe }, { status: 200 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: 'Failed to fetch recipe' },
       { status: 500 }

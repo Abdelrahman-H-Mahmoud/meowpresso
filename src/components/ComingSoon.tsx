@@ -7,7 +7,7 @@ const ComingSoon = ({ title }: { title?: string }) => {
         {title || "Coming Soon"}
       </h2>
       <p className="text-base md:text-lg text-gray-600 text-center max-w-md mx-auto">
-        We're working hard to bring you something amazing. Stay tuned!
+        {`We're working hard to bring you something amazing. Stay tuned!`}
       </p>
     </div>
   );

@@ -1,23 +1,10 @@
 "use client";
 
-import { Recipe, RecipeCategory } from '@/data/recipes';
-import { getBaseUrl } from '@/lib/utils';
+import { RecipeCategory } from '@/data/recipes';
 import { useState } from 'react';
 import RecipeList from './_components/RecipeList';
 import { CategoryFilter } from './_components/CategoryFilter';
 import { useRecipes } from '@/hooks/useRecipes';
-async function getRecipes(categories?: RecipeCategory[]) {
-  const categoriesParam = categories?.join(',');
-  const url = `${getBaseUrl()}/api/recipes${categoriesParam ? `?categories=${categoriesParam}` : ''}`;
-  
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error('Failed to fetch recipes');
-  }
-  
-  const data = await res.json();
-  return data.recipes as Recipe[];
-}
 
 export default function RecipesPage() {
   const [selectedCategories, setSelectedCategories] = useState<Set<RecipeCategory>>(new Set());

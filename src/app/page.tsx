@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { features } from "@/constants/features";
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -42,7 +43,9 @@ export default function Home() {
                 key={index}
                 className="p-6 rounded-lg bg-white shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="text-brown-600 mb-4 flex justify-center" dangerouslySetInnerHTML={{ __html: feature.icon }} />
+                <div className="text-brown-600 mb-6 flex justify-center items-center h-12"
+                     dangerouslySetInnerHTML={{ __html: feature.icon }}>
+                </div>
                 <h3 className="text-xl font-semibold text-coffee-dark mb-3 text-center">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </div>

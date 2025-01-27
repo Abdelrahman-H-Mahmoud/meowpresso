@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -17,9 +18,16 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link 
             href="/" 
-            className="text-2xl font-bold text-coffee-dark dark:text-white hover:text-brown-600 transition-colors"
+            className="flex items-center gap-2 text-2xl font-bold text-coffee-dark dark:text-white hover:text-brown-600 transition-colors"
           >
-            Beanlyst
+            <Image
+              src="/images/logo.png"
+              alt="Meowpresso Logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
+            <span>Meowpresso</span>
           </Link>
           
           {/* Desktop Navigation */}

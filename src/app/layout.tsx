@@ -20,16 +20,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Beanlyst",
-  description: "Beanlyst is a platform for coffee lovers to explore recipes, brewing techniques, and coffee culture.",
+  title: "Meowpresso",
+  description: "Meowpresso is a platform for coffee lovers to explore recipes, brewing techniques, and coffee culture.",
   manifest: "/manifest.json",
   themeColor: "#4A2C2A",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Beanlyst",
+    title: "Meowpresso",
   },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://meowpresso.vercel.app',
+    siteName: 'Meowpresso',
+    title: 'Meowpresso - Your Coffee Recipe Companion',
+    description: 'Discover and brew perfect coffee with our curated recipes and guides',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Meowpresso - Coffee Recipes and Brewing Guides',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Meowpresso - Your Coffee Recipe Companion',
+    description: 'Discover and brew perfect coffee with our curated recipes and guides',
+    images: ['/images/logo.png'],
+    creator: '@meowpresso',
+  },
+  keywords: ['coffee', 'recipes', 'brewing', 'espresso', 'cafe', 'barista', 'coffee guide'],
+  authors: [{ name: 'Meowpresso Team' }],
+  creator: 'Meowpresso',
+  publisher: 'Meowpresso',
 };
 
 export default function RootLayout({
@@ -41,8 +71,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+        <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="theme-color" content="#4A2C2A" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen
         bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200`}

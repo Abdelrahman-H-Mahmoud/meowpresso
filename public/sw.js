@@ -1,4 +1,4 @@
-const CACHE_NAME = 'beanlyst-cache-v1';
+const CACHE_NAME = 'meowpresso-cache-v1';
 
 // Add the URLs and assets you want to cache
 const urlsToCache = [
@@ -6,9 +6,13 @@ const urlsToCache = [
   '/recipes',
   '/offline.html',
   '/manifest.json',
+  '/images/logo.png',
+  '/icons/icon-72.png',
+  '/icons/icon-96.png',
+  '/icons/icon-128.png',
   '/icons/icon-192.png',
-  '/icons/icon-512.png',
-  '/images/default-recipe.jpg'
+  '/icons/icon-384.png',
+  '/icons/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -34,30 +38,28 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      // Return cached response if found
-      if (response) return response;
-
-      // Clone the request because it can only be used once
-      const fetchRequest = event.request.clone();
-
-      // Make network request and cache the response
-      return fetch(fetchRequest).then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-
+      if (response) {
         return response;
-      }).catch(() => {
-        // If offline and requesting a page, return offline page
-        if (event.request.mode === 'navigate') {
-          return caches.match('/offline.html');
-        }
-      });
+      }
+
+      return fetch(event.request)
+        .then((response) => {
+          if (!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
+
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+
+          return response;
+        })
+        .catch(() => {
+          if (event.request.mode === 'navigate') {
+            return caches.match('/offline.html');
+          }
+        });
     })
   );
 }); 

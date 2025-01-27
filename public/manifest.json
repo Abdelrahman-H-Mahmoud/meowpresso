@@ -1,12 +1,34 @@
 {
-  "name": "Beanlyst",
-  "short_name": "Beanlyst",
+  "name": "Meowpresso",
+  "short_name": "Meowpresso",
   "description": "Your coffee recipe companion",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#FAF6F1",
   "theme_color": "#4A2C2A",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "categories": ["food", "lifestyle"],
   "icons": [
+    {
+      "src": "/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/icons/icon-192.png",
       "sizes": "192x192",
@@ -14,9 +36,25 @@
       "purpose": "any maskable"
     },
     {
+      "src": "/icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Recipes",
+      "short_name": "Recipes",
+      "description": "View coffee recipes",
+      "url": "/recipes",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 } 

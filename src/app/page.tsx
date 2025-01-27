@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { features } from "@/constants/features";
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -7,6 +8,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white dark:from-gray-900 to-brown-50 dark:to-gray-800">
         <div className="max-w-7xl mx-auto text-center">
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/images/logo.png"
+              alt="Meowpresso Logo"
+              width={200}
+              height={200}
+              className="rounded-full shadow-lg"
+              priority
+            />
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold text-coffee-dark dark:text-white mb-6">
             Discover the Perfect <span className="text-brown-600 dark:text-accent-400">Coffee</span> Experience
           </h1>

@@ -1,15 +1,21 @@
 {
-  "name": "Meowpresso",
+  "name": "Meowpresso - Your Coffee Recipe Companion",
   "short_name": "Meowpresso",
-  "description": "Your coffee recipe companion",
-  "start_url": "/",
+  "description": "Discover and create perfect coffee recipes with Meowpresso. Your personal barista app for brewing delicious coffee at home.",
+  "start_url": "/?source=pwa",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#FAF6F1",
   "theme_color": "#4A2C2A",
   "scope": "/",
   "prefer_related_applications": false,
-  "categories": ["food", "lifestyle"],
+  "categories": [
+    "food",
+    "lifestyle",
+    "cooking",
+    "beverages",
+    "recipes"
+  ],
   "icons": [
     {
       "src": "/icons/favicon.ico",
@@ -55,11 +61,22 @@
   ],
   "shortcuts": [
     {
-      "name": "View Recipes",
+      "name": "Coffee Recipes",
       "short_name": "Recipes",
-      "description": "View coffee recipes",
+      "description": "Browse our collection of coffee brewing recipes and techniques",
       "url": "/recipes",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Home screen of Meowpresso"
+    }
+  ],
+  "lang": "en",
+  "dir": "ltr"
 } 

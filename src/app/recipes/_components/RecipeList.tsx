@@ -30,6 +30,7 @@ export default function RecipeList({ recipes, isLoading = false }: RecipeListPro
       {recipes.map((recipe) => (
         <Card
           key={recipe.id}
+          id={recipe.id}
           title={recipe.title}
           description={recipe.description}
           imageUrl={recipe.imageUrl}

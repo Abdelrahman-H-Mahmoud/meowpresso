@@ -1,7 +1,9 @@
 import { RecipeCategory } from '@/data/recipes';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CardProps {
+  id?: string;
   title: string;
   description: string;
   imageUrl?: string;
@@ -12,9 +14,9 @@ interface CardProps {
   }[];
 }
 
-export function Card({ title, description, imageUrl, categories, metadata }: CardProps) {
-  return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+export function Card({ id, title, description, imageUrl, categories, metadata }: CardProps) {
+  const Content = (
+    <>
       <div className="relative h-48 w-full">
         <Image
           src={imageUrl || '/images/default-recipe.jpg'}
@@ -46,6 +48,20 @@ export function Card({ title, description, imageUrl, categories, metadata }: Car
           </div>
         )}
       </div>
+    </>
+  );
+
+  if (id) {
+    return (
+      <Link href={`/recipes/${id}`} className="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        {Content}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      {Content}
     </div>
   );
 } 

@@ -25,12 +25,17 @@ export default function RecipesPage() {
     });
   };
 
+  const handleClearFilters = () => {
+    setSelectedCategories(new Set());
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-coffee-dark mb-8">Coffee Recipes</h1>
+      <h1 className="text-3xl font-bold text-coffee-dark dark:text-accent-400 mb-8">Coffee Recipes</h1>
       <CategoryFilter
         selectedCategories={selectedCategories}
         onToggleCategory={handleToggleCategory}
+        onClearFilters={handleClearFilters}
         isLoading={isLoading}
       />
       <RecipeList recipes={recipes} isLoading={isLoading} />

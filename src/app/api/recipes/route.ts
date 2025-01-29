@@ -1,10 +1,11 @@
 import { recipesService } from '@/server/recipes/recipes.service';
+import { RecipeCategory } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const categories = searchParams.get('categories')?.split(',') as string[];
+    const categories = searchParams.get('categories')?.split(',') as RecipeCategory[];
 
     const filteredRecipes =  await recipesService.getRecipes(categories);
 

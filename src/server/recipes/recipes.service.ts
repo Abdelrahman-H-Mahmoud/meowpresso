@@ -3,7 +3,7 @@ import { PrismaClient, RecipeCategory } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export class RecipesService {
-  async getRecipes(categories?: string[]) {
+  async getRecipes(categories?: RecipeCategory[]) {
     try {
       let filteredRecipes;
 
@@ -11,12 +11,12 @@ export class RecipesService {
         filteredRecipes = await prisma.recipe.findMany({
           where: {
             categories: {
-              hasSome: categories as RecipeCategory[],
+              hasSome: categories,
             },
           },
         });
       } else {
-        filteredRecipes = await prisma.recipe.findMany({});
+        filteredRecipes = await prisma.recipe.findMany();
       }
 
       return filteredRecipes;

@@ -14,14 +14,14 @@ datasource db {
 }
 
 enum RecipeCategory {
-  HOT_COFFEE    @map("Hot Coffee")
-  COLD_COFFEE   @map("Cold Coffee")
-  ESPRESSO      @map("Espresso")
-  SPECIALTY     @map("Specialty")
-  BEGINNER      @map("Beginner")
-  ADVANCED      @map("Advanced")
-  QUICK         @map("Quick")
-  TRADITIONAL   @map("Traditional")
+  HOT_COFFEE    @map("HOT_COFFEE")
+  COLD_COFFEE   @map("COLD_COFFEE")
+  ESPRESSO      @map("ESPRESSO")
+  SPECIALTY     @map("SPECIALTY")
+  BEGINNER      @map("BEGINNER")
+  ADVANCED      @map("ADVANCED")
+  QUICK         @map("QUICK")
+  TRADITIONAL   @map("TRADITIONAL")
 }
 
 model Blog {

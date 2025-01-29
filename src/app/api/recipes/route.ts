@@ -1,4 +1,5 @@
-import { recipes, RecipeCategory } from '@/data/recipes';
+import { RecipeCategory } from '@/data/recipes';
+import { recipesService } from '@/server/recipes/recipes.service';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
@@ -6,13 +7,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const categories = searchParams.get('categories')?.split(',') as RecipeCategory[] | undefined;
 
-    let filteredRecipes = recipes;
-    
-    if (categories && categories.length > 0) {
-      filteredRecipes = recipes.filter(recipe =>
-        recipe.categories.some(category => categories.includes(category))
-      );
-    }
+    const filteredRecipes = recipesService.getRecipes(categories);
 
     return NextResponse.json(
       { recipes: filteredRecipes },

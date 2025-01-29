@@ -1,4 +1,4 @@
-import { recipes } from '@/data/recipes';
+import { recipesService } from '@/server/recipes/recipes.service';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
@@ -7,18 +7,20 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const recipe = recipes.find(r => r.id === id);
+    const recipe = recipesService.getRecipeById(id);
     
-    if (!recipe) {
+    return NextResponse.json(
+      { recipe },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error(error);
+    if (error instanceof Error && error.message === 'Recipe not found') {
       return NextResponse.json(
         { error: 'Recipe not found' },
         { status: 404 }
       );
     }
-
-    return NextResponse.json({ recipe }, { status: 200 });
-  } catch (error) {
-    console.error(error);
     return NextResponse.json(
       { error: 'Failed to fetch recipe' },
       { status: 500 }

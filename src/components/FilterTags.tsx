@@ -23,7 +23,7 @@ export function FilterTags({
 
   return (
     <div className={`mb-6 ${className}`}>
-      <h2 className="text-lg font-semibold mb-2 text-coffee-dark dark:text-accent-400">Filter by {title}</h2>
+      <h2 className="text-lg font-semibold mb-2 text-coffee-dark dark:text-accent-400">{title}</h2>
       <div className="flex flex-wrap gap-2">
         {options.map((option) => (
           <button

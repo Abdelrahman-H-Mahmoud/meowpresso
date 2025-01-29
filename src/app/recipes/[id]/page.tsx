@@ -8,6 +8,7 @@ import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Clock, BarChart2 } from 'lucide-react';
 import { extractIdFromSeoUrl } from '@/utils/url';
+import { categoryMap } from '../categoryMap';
 
 export default function RecipeDetailPage() {
   const { id } = useParams();
@@ -67,7 +68,7 @@ export default function RecipeDetailPage() {
                   key={category}
                   className="px-3 py-1 text-sm font-medium bg-brown-600/90 dark:bg-accent-500/90 rounded-full"
                 >
-                  {category}
+                  {categoryMap[category] }
                 </span>
               ))}
             </div>

@@ -31,9 +31,9 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="relative -mt-20">
+    <div className="relative">
       {/* Hero Section */}
-      <section className="relative h-[100vh] flex items-center">
+      <section className="relative min-h-[100vh] pt-20 flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80"
@@ -45,7 +45,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 py-12 md:py-0">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

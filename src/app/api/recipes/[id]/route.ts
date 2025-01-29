@@ -7,7 +7,7 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const recipe = recipesService.getRecipeById(id);
+    const recipe = await recipesService.getRecipeById(id);
     
     return NextResponse.json(
       { recipe },

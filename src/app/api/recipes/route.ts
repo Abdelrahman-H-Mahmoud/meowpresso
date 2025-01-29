@@ -1,13 +1,12 @@
-import { RecipeCategory } from '@/data/recipes';
 import { recipesService } from '@/server/recipes/recipes.service';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const categories = searchParams.get('categories')?.split(',') as RecipeCategory[] | undefined;
+    const categories = searchParams.get('categories')?.split(',') as string[];
 
-    const filteredRecipes = recipesService.getRecipes(categories);
+    const filteredRecipes =  await recipesService.getRecipes(categories);
 
     return NextResponse.json(
       { recipes: filteredRecipes },

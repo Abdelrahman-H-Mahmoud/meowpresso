@@ -7,7 +7,7 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const blog = blogsService.getBlogById(id);
+    const blog = await blogsService.getBlogById(id);
     
     return NextResponse.json(
       { blog },

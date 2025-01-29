@@ -1,7 +1,7 @@
 "use client";
 
 import { FilterTags } from '@/components/FilterTags';
-import { RecipeCategory } from '@/data/recipes';
+import { RecipeCategory } from '@prisma/client';
 
 interface CategoryFilterProps {
   selectedCategories: RecipeCategory[];

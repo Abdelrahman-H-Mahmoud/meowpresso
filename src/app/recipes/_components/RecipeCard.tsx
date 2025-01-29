@@ -1,4 +1,4 @@
-import { Recipe } from '@/data/recipes';
+import { Recipe } from '@prisma/client';
 import { Card } from '@/components/Card';
 import { createSeoUrl } from '@/utils/url';
 interface RecipeCardProps {

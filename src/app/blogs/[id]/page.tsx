@@ -81,7 +81,7 @@ export default function BlogPage() {
               <span>•</span>
               <span className="flex items-center gap-2">
                 <Calendar size={16} className="opacity-75" />
-                {blog.publishDate}
+                {(new Date(blog.publishDate).toDateString())}
               </span>
               <span>•</span>
               <span className="flex items-center gap-2">

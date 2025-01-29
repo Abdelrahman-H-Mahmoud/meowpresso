@@ -1,16 +1,25 @@
-import { blogs } from '@/data/blogs';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export class BlogsService {
-  getBlogs(tags?: string[]) {
+  async getBlogs(tags?: string[]) {
     try {
-      let filteredBlogs = blogs;
-      
+      let filteredBlogs;
+      console.log('tags', tags);
       if (tags && tags.length > 0) {
-        filteredBlogs = blogs.filter(blog =>
-          blog.tags.some(tag => tags.includes(tag))
-        );
+        filteredBlogs = await prisma.blog.findMany({
+          where: {
+            tags: {
+              hasSome: tags,
+            },
+          },
+        });
+      } else {
+        console.log('no tags');
+        filteredBlogs = await prisma.blog.findMany({});
       }
-
+      console.log('filteredBlogs', filteredBlogs);
       return filteredBlogs;
     } catch (error) {
       console.error('Error in BlogsService.getBlogs:', error);
@@ -18,10 +27,12 @@ export class BlogsService {
     }
   }
 
-  getBlogById(id: string) {
+  async getBlogById(id: string) {
     try {
-      const blog = blogs.find(blog => blog.id === id);
-      
+      const blog = await prisma.blog.findUnique({
+        where: { id },
+      });
+
       if (!blog) {
         throw new Error('Blog not found');
       }
@@ -34,4 +45,4 @@ export class BlogsService {
   }
 }
 
-export const blogsService = new BlogsService(); 
+export const blogsService = new BlogsService();

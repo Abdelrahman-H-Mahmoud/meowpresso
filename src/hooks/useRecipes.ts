@@ -1,4 +1,4 @@
-import { Recipe, RecipeCategory } from '@/data/recipes';
+import { Recipe, RecipeCategory } from '@prisma/client';
 import { getBaseUrl } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 
@@ -16,5 +16,21 @@ export function useRecipes(categories?: RecipeCategory[]) {
   return useQuery({
     queryKey: ['recipes', categories],
     queryFn: () => getRecipes(categories),
+  });
+} 
+
+async function getRecipe(id: string) {
+  const res = await fetch(`${getBaseUrl()}/api/recipes/${id}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch recipe');
+  }
+  const data = await res.json();
+  return data.recipe as Recipe;
+}
+
+export function useRecipe(id: string) {
+  return useQuery({
+    queryKey: ['recipe', id],
+    queryFn: () => getRecipe(id),
   });
 } 

@@ -1,10 +1,10 @@
 "use client";
 
-import { RecipeCategory } from '@/data/recipes';
 import { useState } from 'react';
 import RecipeList from './_components/RecipeList';
 import  CategoryFilter  from './_components/CategoryFilter';
 import { useRecipes } from '@/hooks/useRecipes';
+import { RecipeCategory } from '@prisma/client';
 
 export default function RecipesPage() {
   const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>([]);

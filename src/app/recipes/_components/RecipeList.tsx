@@ -1,6 +1,6 @@
 "use client";
 
-import { Recipe } from '@/data/recipes';
+import { Recipe } from '@prisma/client';
 import { motion } from 'framer-motion';
 import RecipeCard from './RecipeCard';
 

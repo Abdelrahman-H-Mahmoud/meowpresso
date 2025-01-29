@@ -1,14 +1,22 @@
-import { recipes, RecipeCategory } from '@/data/recipes';
+import { PrismaClient, RecipeCategory } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export class RecipesService {
-  getRecipes(categories?: RecipeCategory[]) {
+  async getRecipes(categories?: string[]) {
     try {
-      let filteredRecipes = recipes;
-      
+      let filteredRecipes;
+
       if (categories && categories.length > 0) {
-        filteredRecipes = recipes.filter(recipe =>
-          recipe.categories.some(category => categories.includes(category))
-        );
+        filteredRecipes = await prisma.recipe.findMany({
+          where: {
+            categories: {
+              hasSome: categories as RecipeCategory[],
+            },
+          },
+        });
+      } else {
+        filteredRecipes = await prisma.recipe.findMany({});
       }
 
       return filteredRecipes;
@@ -18,10 +26,12 @@ export class RecipesService {
     }
   }
 
-  getRecipeById(id: string) {
+  async getRecipeById(id: string) {
     try {
-      const recipe = recipes.find(recipe => recipe.id === id);
-      
+      const recipe = await prisma.recipe.findUnique({
+        where: { id },
+      });
+
       if (!recipe) {
         throw new Error('Recipe not found');
       }

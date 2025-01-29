@@ -1,7 +1,7 @@
 "use client";
 
 import Image from 'next/image';
-import { useRecipe } from '@/hooks/useRecipe';
+import { useRecipe } from '@/hooks/useRecipes';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';

@@ -6,8 +6,8 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const tags = searchParams.get('tags')?.split(',');
 
-    const filteredBlogs = blogsService.getBlogs(tags);
-
+    const filteredBlogs = await blogsService.getBlogs(tags);
+    console.log('filteredBlogs', filteredBlogs);
     return NextResponse.json(
       { blogs: filteredBlogs },
       { status: 200 }

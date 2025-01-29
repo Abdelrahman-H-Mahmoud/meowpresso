@@ -1,6 +1,6 @@
-import { Blog } from '@/data/blogs';
 import { Card } from '@/components/Card';
 import { createSeoUrl } from '@/utils/url';
+import { Blog } from '@prisma/client';
 interface BlogCardProps {
   blog: Blog;
 }

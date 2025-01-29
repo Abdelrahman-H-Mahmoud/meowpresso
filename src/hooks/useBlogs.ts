@@ -1,4 +1,4 @@
-import { Blog } from '@/data/blogs';
+import { Blog } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 
 async function getBlogs(tags?: string[]) {

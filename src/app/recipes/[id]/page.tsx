@@ -7,10 +7,12 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Clock, BarChart2 } from 'lucide-react';
+import { extractIdFromSeoUrl } from '@/utils/url';
 
 export default function RecipeDetailPage() {
   const { id } = useParams();
-  const { data: recipe, isLoading, error } = useRecipe(id as string);
+  const actualId = extractIdFromSeoUrl(id as string);
+  const { data: recipe, isLoading, error } = useRecipe(actualId);
 
   if (isLoading) {
     return (

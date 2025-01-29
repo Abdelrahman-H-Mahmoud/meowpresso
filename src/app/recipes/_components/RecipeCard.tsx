@@ -1,6 +1,6 @@
 import { Recipe } from '@/data/recipes';
 import { Card } from '@/components/Card';
-
+import { createSeoUrl } from '@/utils/url';
 interface RecipeCardProps {
   recipe: Recipe;
 }
@@ -8,7 +8,7 @@ interface RecipeCardProps {
 export default function RecipeCard({ recipe }: RecipeCardProps) {
   return (
     <Card
-      href={`/recipes/${recipe.id}`}
+      href={`/recipes/${createSeoUrl(recipe.id, recipe.title)}`}
       imageUrl={recipe.imageUrl || ''}
       imageAlt={recipe.title}
       title={recipe.title}

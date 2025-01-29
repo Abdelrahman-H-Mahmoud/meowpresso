@@ -1,6 +1,6 @@
 import { Blog } from '@/data/blogs';
 import { Card } from '@/components/Card';
-
+import { createSeoUrl } from '@/utils/url';
 interface BlogCardProps {
   blog: Blog;
 }
@@ -8,7 +8,7 @@ interface BlogCardProps {
 export default function BlogCard({ blog }: BlogCardProps) {
   return (
     <Card
-      href={`/blogs/${blog.id}`}
+      href={`/blogs/${createSeoUrl(blog.id, blog.title)}`}
       imageUrl={blog.imageUrl}
       imageAlt={blog.title}
       title={blog.title}

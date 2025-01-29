@@ -8,10 +8,13 @@ import { useParams } from 'next/navigation';
 import { ContentRenderer } from '@/components/ContentRenderer';
 import { motion } from 'framer-motion';
 import { Clock, Calendar } from 'lucide-react';
+import { extractIdFromSeoUrl } from '@/utils/url';
 
 export default function BlogPage() {
   const { id } = useParams();
-  const { data: blog, isLoading, error } = useBlog(id as string);
+  const actualId = extractIdFromSeoUrl(id as string);
+
+  const { data: blog, isLoading, error } = useBlog(actualId);
 
   if (isLoading) {
     return (

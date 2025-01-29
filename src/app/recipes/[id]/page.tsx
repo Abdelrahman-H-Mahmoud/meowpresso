@@ -1,6 +1,5 @@
 "use client";
 
-import { use } from 'react';
 import Image from 'next/image';
 import { useRecipe } from '@/hooks/useRecipe';
 import { LoadingSpinner } from '@/components/LoadingSpinner';

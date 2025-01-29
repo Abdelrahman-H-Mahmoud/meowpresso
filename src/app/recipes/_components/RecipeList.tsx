@@ -1,7 +1,6 @@
 "use client";
 
 import { Recipe } from '@/data/recipes';
-import { Card } from '@/components/Card';
 import { motion } from 'framer-motion';
 import RecipeCard from './RecipeCard';
 

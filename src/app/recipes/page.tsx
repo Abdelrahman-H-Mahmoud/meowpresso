@@ -5,7 +5,6 @@ import { useState } from 'react';
 import RecipeList from './_components/RecipeList';
 import  CategoryFilter  from './_components/CategoryFilter';
 import { useRecipes } from '@/hooks/useRecipes';
-import Link from 'next/link';
 
 export default function RecipesPage() {
   const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>([]);

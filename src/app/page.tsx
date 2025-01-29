@@ -104,8 +104,7 @@ export default function Home() {
               Everything You Need to Brew Perfect Coffee
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              From beginner-friendly guides to advanced techniques, we've got everything you need to elevate your coffee game.
-            </p>
+              {`From beginner-friendly guides to advanced techniques, we've got everything you need to elevate your coffee game.`}            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">

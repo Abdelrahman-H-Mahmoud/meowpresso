@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Instagram, Coffee } from 'lucide-react';
+import { Logo } from '@/components/Logo';
 
 const navigation = {
   main: [
@@ -24,23 +24,7 @@ export function Footer() {
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="flex flex-col items-center gap-10">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="group"
-          >
-            <Link href="/" className="flex items-center gap-4">
-              <Image
-                src="/images/logo.png"
-                alt="Meowpresso"
-                width={60}
-                height={60}
-                className="object-contain transition-transform group-hover:rotate-6"
-              />
-              <span className="text-2xl font-bold bg-gradient-to-r from-brown-600 to-accent-500 dark:from-accent-400 dark:to-brown-400 bg-clip-text text-transparent">
-                Meowpresso
-              </span>
-            </Link>
-          </motion.div>
+          <Logo size="lg" />
 
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4" aria-label="Footer">
             {navigation.main.map((item) => (

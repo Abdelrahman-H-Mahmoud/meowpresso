@@ -31,23 +31,23 @@ export function Card({
   meta 
 }: CardProps) {
   return (
-    <Link href={href} className="block transform hover:-translate-y-1 transition-all duration-300">
-      <article className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-[26rem]">
-        <div className="relative h-48 group">
+    <Link href={href} className="group block transform hover:-translate-y-2 transition-all duration-300">
+      <article className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700">
+        <div className="relative h-48 overflow-hidden">
           <Image
             src={imageUrl}
             alt={imageAlt}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className="object-cover transform transition-transform duration-500 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         </div>
-        <div className="p-4 flex flex-col h-[calc(26rem-12rem)]">
+        <div className="p-6">
           <div className="flex flex-wrap gap-2 mb-3">
             {tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-1 text-xs font-medium text-white bg-brown-600/90 dark:bg-accent-500/90 rounded-full"
+                className="px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-brown-500 to-brown-600 dark:from-accent-500 dark:to-accent-600 rounded-full"
               >
                 {tag.label}
               </span>

@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/providers/ThemeProvider';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { PageTransition } from '@/components/PageTransition';
 import Script from 'next/script';
+import { Footer } from '@/components/Footer';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon.png" />
@@ -88,10 +89,11 @@ export default function RootLayout({
             <ScrollProgress />
             <Navbar />
             <PageTransition>
-              <main className="pt-16">
+              <main className="pt-20">
                 {children}
               </main>
             </PageTransition>
+            <Footer />
             <ScrollToTop />
           </QueryProvider>
         </ThemeProvider>

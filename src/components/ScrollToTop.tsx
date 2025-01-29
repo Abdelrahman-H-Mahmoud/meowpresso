@@ -1,6 +1,8 @@
 "use client";
 
+import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,28 +23,20 @@ export function ScrollToTop() {
     });
   };
 
-  if (!isVisible) return null;
-
   return (
-    <button
-      onClick={scrollToTop}
-      className="fixed bottom-8 right-8 p-3 bg-brown-600 dark:bg-accent-500 text-white rounded-full shadow-lg
-                hover:bg-brown-700 dark:hover:bg-accent-600 transition-all duration-300 hover:scale-110 z-50"
-      aria-label="Scroll to top"
-    >
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M5 10l7-7m0 0l7 7m-7-7v18"
-        />
-      </svg>
-    </button>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 p-3 rounded-full bg-brown-600/90 dark:bg-accent-500/90 text-white shadow-lg hover:transform hover:scale-110 transition-all z-50"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp size={24} />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 } 

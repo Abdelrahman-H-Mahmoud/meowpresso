@@ -3,6 +3,7 @@
 import { Recipe } from '@/data/recipes';
 import { Card } from '@/components/Card';
 import { motion } from 'framer-motion';
+import RecipeCard from './RecipeCard';
 
 interface RecipeListProps {
   recipes: Recipe[];
@@ -72,17 +73,7 @@ export default function RecipeList({ recipes, isLoading = false }: RecipeListPro
             show: { opacity: 1, y: 0 }
           }}
         >
-          <Card
-            id={recipe.id}
-            title={recipe.title}
-            description={recipe.description}
-            imageUrl={recipe.imageUrl}
-            categories={recipe.categories}
-            metadata={[
-              { label: 'Difficulty', value: recipe.difficulty },
-              { label: 'Time', value: recipe.prepTime }
-            ]}
-          />
+          <RecipeCard recipe={recipe} />
         </motion.div>
       ))}
     </motion.div>

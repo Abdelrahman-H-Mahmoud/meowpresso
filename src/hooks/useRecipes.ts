@@ -1,23 +1,20 @@
-import { Recipe } from '@/data/recipes';
+import { Recipe, RecipeCategory } from '@/data/recipes';
 import { getBaseUrl } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 
-async function fetchRecipes(categories?: string) {
-  const url = `${getBaseUrl()}/api/recipes${categories ? `?categories=${categories}` : ''}`;
-  const res = await fetch(url);
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch recipes');
+async function getRecipes(categories?: RecipeCategory[]) {
+  const queryString = categories?.length ? `?categories=${categories.join(',')}` : '';
+  const response = await fetch(`${getBaseUrl()}/api/recipes${queryString}`);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
   }
-  
-  const data = await res.json();
+  const data = await response.json();
   return data.recipes as Recipe[];
 }
 
-export function useRecipes(categories?: string[]) {
+export function useRecipes(categories?: RecipeCategory[]) {
   return useQuery({
     queryKey: ['recipes', categories],
-    queryFn: () => fetchRecipes(categories?.join(',')),
-    initialData: [],
+    queryFn: () => getRecipes(categories),
   });
 } 

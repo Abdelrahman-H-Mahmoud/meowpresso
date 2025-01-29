@@ -3,30 +3,19 @@
 import { RecipeCategory } from '@/data/recipes';
 import { useState } from 'react';
 import RecipeList from './_components/RecipeList';
-import { CategoryFilter } from './_components/CategoryFilter';
+import  CategoryFilter  from './_components/CategoryFilter';
 import { useRecipes } from '@/hooks/useRecipes';
+import Link from 'next/link';
 
 export default function RecipesPage() {
-  const [selectedCategories, setSelectedCategories] = useState<Set<RecipeCategory>>(new Set());
+  const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>([]);
 
   const { data: recipes = [], isLoading } = useRecipes(
-    selectedCategories.size ? Array.from(selectedCategories) : undefined
+    selectedCategories.length ? selectedCategories : undefined
   );
 
-  const handleToggleCategory = (category: RecipeCategory) => {
-    setSelectedCategories(prev => {
-      const next = new Set(prev);
-      if (next.has(category)) {
-        next.delete(category);
-      } else {
-        next.add(category);
-      }
-      return next;
-    });
-  };
-
-  const handleClearFilters = () => {
-    setSelectedCategories(new Set());
+  const handleToggleCategory = (categories: RecipeCategory[]) => {
+    setSelectedCategories(categories);
   };
 
   return (
@@ -34,9 +23,7 @@ export default function RecipesPage() {
       <h1 className="text-3xl font-bold text-coffee-dark dark:text-accent-400 mb-8">Coffee Recipes</h1>
       <CategoryFilter
         selectedCategories={selectedCategories}
-        onToggleCategory={handleToggleCategory}
-        onClearFilters={handleClearFilters}
-        isLoading={isLoading}
+        onCategoriesChange={handleToggleCategory}
       />
       <RecipeList recipes={recipes} isLoading={isLoading} />
     </div>

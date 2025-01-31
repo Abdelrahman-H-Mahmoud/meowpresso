@@ -47,3 +47,26 @@ model Recipe {
   categories  RecipeCategory[]
   imageUrl    String?
 }
+
+model Review {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  storeId   String   @db.ObjectId
+  store     Store    @relation(fields: [storeId], references: [id])
+  rating    Int
+  comment   String
+  author    String
+  createdAt DateTime @default(now())
+}
+
+model Store {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  address   String
+  phone     String
+  hours     Json     // Store hours as JSON object
+  website   String?
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  reviews   Review[]
+}

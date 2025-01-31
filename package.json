@@ -1,5 +1,5 @@
 {
-  "name": "beanlyst",
+  "name": "meowpresso",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
-    "seed": "ts-node src/server/prisma/seed.ts"
+    "db:seed": "node src/server/prisma/seed.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",

@@ -91,7 +91,7 @@ export default function RootLayout({
               <ScrollProgress />
               <Navbar />
               <PageTransition>
-                <main className="pt-20">
+                <main>
                   {children}
                 </main>
               </PageTransition>

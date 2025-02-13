@@ -17,16 +17,6 @@ export const authOptions: NextAuthOptions = {
         session.user.id = user.id;
       }
       return session;
-    },
-    signIn: async ({ user, account }) => {
-      if (account?.provider === 'google' && user.image) {
-        // Update user's image if it changed
-        await prisma.user.update({
-          where: { id: user.id },
-          data: { image: user.image }
-        });
-      }
-      return true;
     }
   },
   pages: {

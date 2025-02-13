@@ -5,6 +5,7 @@ import { useBlogs } from '@/hooks/useBlogs';
 import { useState } from 'react';
 import BlogCard from './_components/BlogCard';
 import TagFilter from './_components/TagFilter';
+import { Blog, User } from '@prisma/client';
 
 export default function BlogsPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -32,7 +33,7 @@ export default function BlogsPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogs?.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
+            <BlogCard key={blog.id} blog={blog as Blog & { author: User | null }} />
           ))}
         </div>
       )}

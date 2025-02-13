@@ -77,11 +77,22 @@ export default function BlogPage() {
               {blog.title}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-200">
-              <span>{blog.author}</span>
+              <div className="flex items-center gap-2">
+                {blog.author?.image ? (
+                  <Image
+                    src={blog.author.image}
+                    alt={blog.author.name || 'Author'}
+                    width={24}
+                    height={24}
+                    className="rounded-full"
+                  />
+                ) : null}
+                <span>{blog.author?.name || 'Anonymous'}</span>
+              </div>
               <span>•</span>
               <span className="flex items-center gap-2">
                 <Calendar size={16} className="opacity-75" />
-                {(new Date(blog.publishDate).toDateString())}
+                {new Date(blog.publishDate).toLocaleDateString()}
               </span>
               <span>•</span>
               <span className="flex items-center gap-2">

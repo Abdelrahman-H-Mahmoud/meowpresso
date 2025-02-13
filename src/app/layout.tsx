@@ -9,6 +9,7 @@ import { ScrollProgress } from '@/components/ScrollProgress';
 import { PageTransition } from '@/components/PageTransition';
 import Script from 'next/script';
 import { Footer } from '@/components/Footer';
+import { AuthProvider } from '@/providers/AuthProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -84,19 +85,21 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen
         bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200`}
       >
-        <ThemeProvider>
-          <QueryProvider>
-            <ScrollProgress />
-            <Navbar />
-            <PageTransition>
-              <main className="pt-20">
-                {children}
-              </main>
-            </PageTransition>
-            <Footer />
-            <ScrollToTop />
-          </QueryProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <QueryProvider>
+              <ScrollProgress />
+              <Navbar />
+              <PageTransition>
+                <main className="pt-20">
+                  {children}
+                </main>
+              </PageTransition>
+              <Footer />
+              <ScrollToTop />
+            </QueryProvider>
+          </ThemeProvider>
+        </AuthProvider>
         <Script
           id="register-sw"
           strategy="afterInteractive"

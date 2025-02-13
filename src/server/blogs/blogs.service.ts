@@ -31,6 +31,9 @@ export class BlogsService {
     try {
       const blog = await prisma.blog.findUnique({
         where: { id },
+        include: {
+          author: true,
+        }
       });
 
       if (!blog) {

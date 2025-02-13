@@ -11,12 +11,14 @@
     "db:seed": "node src/server/prisma/seed.mjs"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.7.4",
     "@tailwindcss/typography": "^0.5.16",
     "@tanstack/react-query": "^5.65.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.0.6",
     "lucide-react": "^0.474.0",
     "next": "15.1.6",
+    "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.3",

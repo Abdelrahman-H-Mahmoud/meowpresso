@@ -1,5 +1,9 @@
-import { Blog } from '@prisma/client';
+import { Blog, User } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
+
+type BlogWithAuthor = Blog & {
+  author: User | null;
+};
 
 async function getBlogs(tags?: string[]) {
   const queryString = tags && tags.length > 0 ? `?tags=${tags.join(',')}` : '';
@@ -19,7 +23,7 @@ export function useBlogs(tags?: string[]) {
 }
 
 export function useBlog(id: string) {
-  return useQuery({
+  return useQuery<BlogWithAuthor>({
     queryKey: ['blog', id],
     queryFn: async () => {
       const response = await fetch(`/api/blogs/${id}`);
@@ -27,7 +31,7 @@ export function useBlog(id: string) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      return data.blog as Blog;
+      return data.blog as BlogWithAuthor;
     },
   });
 } 

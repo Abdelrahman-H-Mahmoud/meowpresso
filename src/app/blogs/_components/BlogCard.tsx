@@ -1,8 +1,11 @@
 import { Card } from '@/components/Card';
 import { createSeoUrl } from '@/utils/url';
-import { Blog } from '@prisma/client';
+import { Blog, User } from '@prisma/client';
+
 interface BlogCardProps {
-  blog: Blog;
+  blog: Blog & {
+    author: User | null;
+  };
 }
 
 export default function BlogCard({ blog }: BlogCardProps) {
@@ -15,7 +18,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
       description={blog.description}
       tags={blog.tags.map(tag => ({ label: tag }))}
       meta={{
-        left: blog.author,
+        left: blog.author?.name || 'Anonymous',
         right: blog.readTime,
         icon: 'calendar'
       }}

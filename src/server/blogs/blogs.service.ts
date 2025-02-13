@@ -14,12 +14,28 @@ export class BlogsService {
               hasSome: tags,
             },
           },
+          include: {
+            author: {
+              select: {
+                name: true,
+                image: true
+              }
+            },
+          },
         });
       } else {
         console.log('no tags');
-        filteredBlogs = await prisma.blog.findMany({});
+        filteredBlogs = await prisma.blog.findMany({
+          include: {
+            author: {
+              select: {
+                name: true,
+                image: true
+              }
+            },
+          }
+        });
       }
-      console.log('filteredBlogs', filteredBlogs);
       return filteredBlogs;
     } catch (error) {
       console.error('Error in BlogsService.getBlogs:', error);
@@ -32,7 +48,12 @@ export class BlogsService {
       const blog = await prisma.blog.findUnique({
         where: { id },
         include: {
-          author: true,
+          author: {
+            select: {
+              name: true,
+              image: true
+            }
+          },
         }
       });
 

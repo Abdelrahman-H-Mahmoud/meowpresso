@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Clock, Calendar, BarChart2 } from 'lucide-react';
+import { Clock, Calendar, BarChart2, User } from 'lucide-react';
 
 interface Tag {
   label: string;
@@ -17,7 +17,7 @@ interface CardProps {
   meta: {
     left: string;
     right: string;
-    icon: 'calendar' | 'difficulty';
+    icon: 'calendar' | 'difficulty' | 'user';
   };
 }
 
@@ -63,6 +63,7 @@ export function Card({
             <span className="flex items-center gap-2">
               {meta.icon === 'calendar' && <Calendar size={14} className="opacity-75" />}
               {meta.icon === 'difficulty' && <BarChart2 size={14} className="opacity-75" />}
+              {meta.icon === 'user' && <User size={14} className="opacity-75" />}
               {meta.left}
             </span>
             <span className="flex items-center gap-2">

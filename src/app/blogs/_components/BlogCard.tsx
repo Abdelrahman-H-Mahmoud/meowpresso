@@ -4,7 +4,7 @@ import { Blog, User } from '@prisma/client';
 
 interface BlogCardProps {
   blog: Blog & {
-    author: User | null;
+    author: Partial<User> | null;
   };
 }
 
@@ -20,7 +20,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
       meta={{
         left: blog.author?.name || 'Anonymous',
         right: blog.readTime,
-        icon: 'calendar'
+        icon: 'user'
       }}
     />
   );

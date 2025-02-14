@@ -5,6 +5,8 @@ const config: NextConfig = {
     domains: [
       'lh3.googleusercontent.com',
       'images.unsplash.com',
+      'github.com',
+      'avatars.githubusercontent.com'
     ],
   },
   /* config options here */

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Coffee, Book, ChefHat, Cat } from 'lucide-react';
+import { TeamMember } from '../components/TeamMember';
 
 const features = [
   {
@@ -29,6 +30,33 @@ const features = [
   }
 ];
 
+const teamMembers = [
+  {
+    id: 1,
+    name: "Abdelrahman Hussien",
+    role: "Full Stack Developer",
+    image: "https://avatars.githubusercontent.com/u/21183052?s=400&u=949532e13609ba07ca233d906a766e096e2c1039&v=4",
+    bio: "Coffee enthusiast and web developer passionate about creating delightful user experiences and sharing knowledge about coffee culture.",
+    socials: {
+      github: "https://github.com/Abdelrahman-H-Mahmoud",
+      twitter: "https://x.com/abdelrahman93_",
+      linkedin: "https://www.linkedin.com/in/abdelrahman-hussien-88779b94/"
+    }
+  },
+  {
+    id: 2,
+    name: "AbdelRahman Wahdan",
+    role: "Full Stack Developer",
+    image: "https://avatars.githubusercontent.com/u/8146379?v=4",
+    bio: "Coffee enthusiast and web developer passionate about creating delightful user experiences and sharing knowledge about coffee culture.",
+    socials: {
+      github: "https://github.com/abdelrahmanahmed",
+      linkedin: "https://www.linkedin.com/in/wahdan/",
+    }
+  },
+  // Add more team members here
+];
+
 export default function Home() {
   return (
     <div className="relative">
@@ -44,7 +72,7 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 py-12 md:py-0">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.div
@@ -63,7 +91,7 @@ export default function Home() {
               <p className="text-xl text-gray-200 mb-8">
                 Join our feline baristas in exploring the art of coffee making. From whisker-licking good recipes to tail-raising brewing techniques.
               </p>
-              <Link 
+              <Link
                 href="/recipes"
                 className="inline-flex items-center px-6 py-3 bg-brown-600 hover:bg-brown-700 dark:bg-accent-500 dark:hover:bg-accent-600 text-white rounded-lg transition-colors group"
               >
@@ -90,6 +118,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
 
       {/* Features Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
@@ -137,6 +167,33 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* Team Section */}
+      <section className="py-24 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Meet Our Team
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-brown-500 to-brown-600 dark:from-accent-400 dark:to-accent-500 mx-auto mb-6" />
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg">
+              The passionate coffee lovers behind Meowpresso, dedicated to sharing our knowledge
+              and love for coffee with the community.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+            {teamMembers.map((member, index) => (
+              <TeamMember key={member.id} {...member} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
       {/* CTA Section */}
       <section className="py-20 bg-brown-600/5 dark:bg-accent-500/5">
         <div className="container mx-auto px-4">
@@ -152,7 +209,7 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Join our community of coffee enthusiasts and discover the perfect brew for every moment.
             </p>
-            <Link 
+            <Link
               href="/recipes"
               className="inline-flex items-center px-6 py-3 bg-brown-600 hover:bg-brown-700 dark:bg-accent-500 dark:hover:bg-accent-600 text-white rounded-lg transition-colors group"
             >

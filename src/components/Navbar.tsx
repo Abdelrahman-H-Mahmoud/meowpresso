@@ -12,6 +12,7 @@ import { Modal } from '@/components/ui/Modal';
 import { SignInContent } from '@/components/auth/SignInContent';
 import { LoginButton } from '@/components/auth/LoginButton';
 import { LogoutButton } from '@/components/auth/LogoutButton';
+import { CartButton } from '@/components/CartButton';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -34,9 +35,10 @@ export default function Navbar() {
             <Logo size="sm" />
 
             {/* Desktop navigation */}
-            <nav className="hidden md:flex flex-1 gap-2 mx-8">
+            <nav className="hidden md:flex flex-1 items-center justify-center gap-2 mx-8">
               {[
                 { path: '/recipes', label: 'Recipes' },
+                { path: '/products', label: 'Shop' },
                 { path: '/blogs', label: 'Blog' },
                 { path: '/stores', label: 'Stores' },
               ].map(({ path, label }) => (
@@ -56,27 +58,30 @@ export default function Navbar() {
 
             {/* Desktop actions */}
             <div className="hidden md:flex items-center gap-4">
-              <ThemeToggle />
-              {status === 'authenticated' && session?.user ? (
-                <div className="flex items-center gap-3">
-                  <Link href="/profile" className="flex items-center gap-2 hover:opacity-80">
-                    {session.user.image ? (
-                      <Image
-                        src={session.user.image}
-                        alt={session.user.name || 'Profile'}
-                        width={32}
-                        height={32}
-                        className="rounded-full"
-                      />
-                    ) : (
-                      <User className="w-8 h-8 p-1.5 rounded-full bg-gray-100 dark:bg-gray-800" />
-                    )}
-                  </Link>
-                  <LogoutButton onClick={() => signOut()} />
-                </div>
-              ) : (
-                <LoginButton onClick={() => setIsLoginModalOpen(true)} />
-              )}
+              <div className="flex items-center gap-2">
+                <CartButton />
+                <ThemeToggle />
+                {status === 'authenticated' && session?.user ? (
+                  <div className="flex items-center gap-3">
+                    <Link href="/profile" className="flex items-center gap-2 hover:opacity-80">
+                      {session.user.image ? (
+                        <Image
+                          src={session.user.image}
+                          alt={session.user.name || 'Profile'}
+                          width={32}
+                          height={32}
+                          className="rounded-full"
+                        />
+                      ) : (
+                        <User className="w-8 h-8 p-1.5 rounded-full bg-gray-100 dark:bg-gray-800" />
+                      )}
+                    </Link>
+                    <LogoutButton onClick={() => signOut()} />
+                  </div>
+                ) : (
+                  <LoginButton onClick={() => setIsLoginModalOpen(true)} />
+                )}
+              </div>
             </div>
 
             {/* Mobile menu button */}
@@ -124,6 +129,7 @@ export default function Navbar() {
 
             {[
               { path: '/recipes', label: 'Recipes' },
+              { path: '/products', label: 'Shop' },
               { path: '/blogs', label: 'Blog' },
               { path: '/stores', label: 'Stores' },
               ...(status === 'authenticated' ? [{ path: '/profile', label: 'Profile' }] : []),

@@ -103,7 +103,7 @@ model Review {
 }
 
 model Store {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   address   String
   phone     String
@@ -114,3 +114,61 @@ model Store {
   updatedAt DateTime @updatedAt
   reviews   Review[]
 }
+
+model Product {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  description   String
+  images        String[]        // Array of image URLs
+  roastLevel    RoastLevel
+  origins       String[]        // Array of origins
+  process       CoffeeProcess
+  flavor        String[]        // Array of flavors
+  category      ProductCategory
+  brewingMethods String[]       // Array of brewing methods
+  variants      ProductVariant[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model ProductVariant {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  weight    Int
+  price     Float
+  inStock   Boolean  @default(true)
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String   @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum RoastLevel {
+  Light
+  Medium
+  Dark
+  MediumDark
+}
+
+enum CoffeeProcess {
+  Washed
+  Natural
+  Honey
+  Anaerobic
+  WetHulled
+}
+
+enum ProductCategory {
+  beans
+  ground
+  capsules
+}
+
+enum BrewingMethod {
+  Espresso
+  Filter
+  FrenchPress
+  PourOver
+  ColdBrew
+  MokaPot
+  AeroPress
+} 

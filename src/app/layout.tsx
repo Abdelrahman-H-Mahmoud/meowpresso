@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/components/Navbar';
@@ -23,12 +23,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#4A2C2A',
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://meowpresso.com'),
   title: "Meowpresso",
   description: "Meowpresso is a platform for coffee lovers to explore recipes, brewing techniques, and coffee culture.",
   manifest: "/manifest.json",
-  themeColor: "#4A2C2A",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -40,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://meowpresso-nfzq.vercel.app/',
+    url: 'https://meowpresso.com/',
     siteName: 'Meowpresso',
     title: 'Meowpresso - Your Coffee Recipe Companion',
     description: 'Discover and brew perfect coffee with our curated recipes and guides',

@@ -7,12 +7,6 @@ const urlsToCache = [
   '/offline.html',
   '/manifest.json',
   '/images/logo.png',
-  '/icons/icon-72.png',
-  '/icons/icon-96.png',
-  '/icons/icon-128.png',
-  '/icons/icon-192.png',
-  '/icons/icon-384.png',
-  '/icons/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {

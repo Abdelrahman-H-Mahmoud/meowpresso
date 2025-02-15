@@ -11,6 +11,7 @@ import Script from 'next/script';
 import { Footer } from '@/components/Footer';
 import { AuthProvider } from '@/providers/AuthProvider';
 import { Providers } from '@/components/providers/Providers';
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,6 +100,7 @@ export default function RootLayout({
                 </PageTransition>
                 <Footer />
                 <ScrollToTop />
+                <Toaster position="top-center" />
               </QueryProvider>
             </ThemeProvider>
           </AuthProvider>

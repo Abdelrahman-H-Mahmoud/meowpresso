@@ -85,16 +85,20 @@ export default function Navbar() {
             </div>
 
             {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            <div className="flex md:hidden items-center gap-2">
+              <CartButton />
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Mobile menu */}
@@ -148,9 +152,8 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <div className="flex items-center gap-4 px-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <ThemeToggle />
-              {status === 'authenticated' ? (
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              {status === 'authenticated' && session?.user ? (
                 <LogoutButton onClick={() => signOut()} />
               ) : (
                 <LoginButton onClick={() => setIsLoginModalOpen(true)} />

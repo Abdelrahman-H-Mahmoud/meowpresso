@@ -19,6 +19,7 @@ import { use } from 'react';
 import { extractIdFromSeoUrl } from '@/utils/url';
 import { useCartStore } from '@/store/useCartStore';
 import { cn } from '@/lib/utils';
+import toast from 'react-hot-toast';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -52,6 +53,23 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   const handleAddToCart = () => {
     if (product && selectedVariant) {
       addItem(product, selectedVariant);
+      toast.success(
+        <div className="flex items-center gap-2">
+          <span className="font-medium">Added to cart!</span>
+          <span className="text-sm text-gray-500">
+            {product.name} - {selectedVariant.weight}g
+          </span>
+        </div>,
+        {
+          duration: 2000,
+          style: {
+            background: '#F9FAFB',
+            color: '#111827',
+            border: '1px solid #E5E7EB',
+          },
+          icon: '🛍️',
+        }
+      );
     }
   };
 

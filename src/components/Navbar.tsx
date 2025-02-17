@@ -13,6 +13,7 @@ import { SignInContent } from '@/components/auth/SignInContent';
 import { LoginButton } from '@/components/auth/LoginButton';
 import { LogoutButton } from '@/components/auth/LogoutButton';
 import { CartButton } from '@/components/CartButton';
+import { WaitlistCounter } from '@/components/WaitlistCounter';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -58,6 +59,7 @@ export default function Navbar() {
 
             {/* Desktop actions */}
             <div className="hidden md:flex items-center gap-4">
+              <WaitlistCounter />
               <div className="flex items-center gap-2">
                 <CartButton />
                 <ThemeToggle />

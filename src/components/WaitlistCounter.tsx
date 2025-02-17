@@ -1,12 +1,12 @@
 'use client';
 
-import { useWaitlistCount } from '@/hooks/useWaitlistCount';
+import { useWaitlistStore } from '@/stores/waitlist';
 import { Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Tooltip } from '@/components/ui/Tooltip';
 
 export function WaitlistCounter() {
-  const count = useWaitlistCount();
+  const count = useWaitlistStore(state => state.count);
 
   return (
     <Tooltip content="Coffee enthusiasts on waitlist">

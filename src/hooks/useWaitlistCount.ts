@@ -1,6 +1,14 @@
-import { useWaitlist } from '@/providers/WaitlistProvider';
+'use client';
+
+import { useEffect } from 'react';
+import { useWaitlistStore } from '@/stores/waitlist';
 
 export function useWaitlistCount() {
-  const { count } = useWaitlist();
+  const { count, fetchCount } = useWaitlistStore();
+
+  useEffect(() => {
+    fetchCount();
+  }, [fetchCount]);
+
   return count;
-} 
+}

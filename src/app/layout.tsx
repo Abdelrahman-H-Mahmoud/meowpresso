@@ -90,29 +90,23 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" content="#4A2C2A" />
-        
+
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen
         bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200`}
       >
         <Providers>
-          <AuthProvider>
-            <ThemeProvider>
-              <QueryProvider>
-                <ScrollProgress />
-                <Navbar />
-                <PageTransition>
-                  <main>
-                    {children}
-                  </main>
-                </PageTransition>
-                <Footer />
-                <ScrollToTop />
-                <WaitlistSubscribe />
-                <Toaster position="top-center" />
-              </QueryProvider>
-            </ThemeProvider>
-          </AuthProvider>
+          <ScrollProgress />
+          <Navbar />
+          <PageTransition>
+            <main>
+              {children}
+            </main>
+          </PageTransition>
+          <Footer />
+          <ScrollToTop />
+          <WaitlistSubscribe />
+          <Toaster position="top-center" />
         </Providers>
         <Script
           id="register-sw"

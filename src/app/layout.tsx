@@ -12,6 +12,7 @@ import { Footer } from '@/components/Footer';
 import { AuthProvider } from '@/providers/AuthProvider';
 import { Providers } from '@/components/providers/Providers';
 import { Toaster } from 'react-hot-toast';
+import { WaitlistSubscribe } from '@/components/WaitlistSubscribe';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -107,6 +108,7 @@ export default function RootLayout({
                 </PageTransition>
                 <Footer />
                 <ScrollToTop />
+                <WaitlistSubscribe />
                 <Toaster position="top-center" />
               </QueryProvider>
             </ThemeProvider>

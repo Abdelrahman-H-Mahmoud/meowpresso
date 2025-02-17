@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Coffee, Book, ChefHat, Cat } from 'lucide-react';
+import { WaitlistSubscribe } from '@/components/WaitlistSubscribe';
 
 const features = [
   {
@@ -162,6 +163,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <WaitlistSubscribe />
     </div>
   );
 }

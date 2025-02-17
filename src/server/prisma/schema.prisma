@@ -171,4 +171,15 @@ enum BrewingMethod {
   ColdBrew
   MokaPot
   AeroPress
+}
+
+model Waitlist {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String   @unique
+  name        String
+  phone       String
+  countryCode String
+  position    Int      @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 } 

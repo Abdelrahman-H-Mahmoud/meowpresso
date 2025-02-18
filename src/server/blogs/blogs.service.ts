@@ -6,7 +6,6 @@ export class BlogsService {
   async getBlogs(tags?: string[]) {
     try {
       let filteredBlogs;
-      console.log('tags', tags);
       if (tags && tags.length > 0) {
         filteredBlogs = await prisma.blog.findMany({
           where: {
@@ -24,7 +23,6 @@ export class BlogsService {
           },
         });
       } else {
-        console.log('no tags');
         filteredBlogs = await prisma.blog.findMany({
           include: {
             author: {

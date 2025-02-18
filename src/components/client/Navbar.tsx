@@ -12,9 +12,9 @@ import { WaitlistCounter } from '@/components/WaitlistCounter';
 import { Modal } from '@/components/ui/Modal';
 import { SignInContent } from '@/components/auth/SignInContent';
 import { navigationItems, NavItem } from '@/config/navigation';
-import { DesktopNav } from './DesktopNav';
-import { UserMenu } from './UserMenu';
-import { MobileMenu } from './MobileMenu';
+import { DesktopNav } from '@/components/navbar/DesktopNav';
+import { UserMenu } from '@/components/navbar/UserMenu';
+import { MobileMenu } from '@/components/navbar/MobileMenu';
 
 export default function Navbar() {
   const pathname = usePathname();

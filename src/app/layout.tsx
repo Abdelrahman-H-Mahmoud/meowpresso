@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from '@/components/navbar/Navbar';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { PageTransition } from '@/components/PageTransition';
@@ -10,6 +9,7 @@ import { Footer } from '@/components/Footer';
 import { Providers } from '@/components/providers/Providers';
 import { Toaster } from 'react-hot-toast';
 import { WaitlistSubscribe } from '@/components/WaitlistSubscribe';
+import { NavbarWrapper } from '@/components/client/NavbarWrapper';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,11 +94,9 @@ export default function RootLayout({
       >
         <Providers>
           <ScrollProgress />
-          <Navbar />
+          <NavbarWrapper />
           <PageTransition>
-            <main>
-              {children}
-            </main>
+            <main>{children}</main>
           </PageTransition>
           <Footer />
           <ScrollToTop />

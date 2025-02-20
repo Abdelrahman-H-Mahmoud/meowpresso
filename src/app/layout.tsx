@@ -8,7 +8,6 @@ import Script from 'next/script';
 import { Footer } from '@/components/Footer';
 import { Providers } from '@/components/providers/Providers';
 import { Toaster } from 'react-hot-toast';
-import { WaitlistSubscribe } from '@/components/WaitlistSubscribe';
 import { NavbarWrapper } from '@/components/client/NavbarWrapper';
 
 const geistSans = Geist({
@@ -100,7 +99,6 @@ export default function RootLayout({
           </PageTransition>
           <Footer />
           <ScrollToTop />
-          <WaitlistSubscribe />
           <Toaster position="top-center" />
         </Providers>
         <Script

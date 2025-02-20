@@ -11,16 +11,13 @@ export function WaitlistCounter() {
   return (
     <Tooltip content="Coffee enthusiasts on waitlist">
       <motion.div 
-        className="flex items-center gap-1.5 px-3 py-1.5 bg-brown-50 dark:bg-accent-900/20 
+        className="flex items-center gap-1.5 px-2 py-1.5 bg-brown-50 dark:bg-accent-900/20 
           rounded-full text-brown-600 dark:text-accent-400 cursor-help"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Users className="w-4 h-4 flex-shrink-0" />
-        <div className="flex flex-col -space-y-0.5">
-          <span className="text-sm font-semibold leading-none">{count}</span>
-          <span className="text-[10px] leading-none opacity-80">on waitlist</span>
-        </div>
+        <Users className="w-3.5 h-3.5 md:w-4 md:h-4 flex-shrink-0" />
+        <span className="text-xs md:text-sm font-medium leading-none">{count}</span>
       </motion.div>
     </Tooltip>
   );

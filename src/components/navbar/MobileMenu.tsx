@@ -7,6 +7,7 @@ import { Session } from 'next-auth';
 import { NavItem } from '@/config/navigation';
 import { LoginButton } from '@/components/auth/LoginButton';
 import { LogoutButton } from '@/components/auth/LogoutButton';
+import { WaitlistCounter } from '@/components/WaitlistCounter';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -60,18 +61,28 @@ export function MobileMenu({
         </div>
       )}
 
-      {items.map((item) => (
+      <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+          <WaitlistCounter />
+          <span>coffee enthusiasts on waitlist</span>
+        </div>
+      </div>
+
+      {[
+        ...items,
+        ...(status === 'authenticated' ? [{ path: '/profile', label: 'Profile', isVisible: true }] : []),
+      ].map(({ path, label }) => (
         <Link
-          key={item.path}
-          href={item.path}
+          key={path}
+          href={path}
           onClick={onItemClick}
           className={`block px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-            isActive(item.path)
+            isActive(path)
               ? 'bg-brown-600 dark:bg-accent-500 text-white'
               : 'text-gray-600 hover:bg-brown-50 dark:hover:bg-accent-400/10 hover:text-brown-600 dark:hover:text-accent-400'
           }`}
         >
-          {item.label}
+          {label}
         </Link>
       ))}
 

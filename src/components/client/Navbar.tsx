@@ -73,7 +73,6 @@ export default function Navbar() {
 
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center gap-3">
-              <WaitlistCounter />
               <CartButton />
               <ThemeToggle />
               <button

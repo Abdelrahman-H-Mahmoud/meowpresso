@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { useEffect, useState } from 'react';
 
 const Navbar = dynamic(() => import('@/components/client/Navbar'), {
   ssr: false,
@@ -9,9 +9,15 @@ const Navbar = dynamic(() => import('@/components/client/Navbar'), {
 });
 
 export function NavbarWrapper() {
-  return (
-    <Suspense fallback={null}>
-      <Navbar />
-    </Suspense>
-  );
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return <Navbar />;
 } 

@@ -6,7 +6,7 @@ import { NavItem } from '@/config/navigation';
 interface DesktopNavProps {
   items: NavItem[];
   isActive: (path: string) => boolean;
-  onActionClick: (item: NavItem) => void;
+  onActionClick?: (item: NavItem) => void;
 }
 
 export function DesktopNav({ items, isActive, onActionClick }: DesktopNavProps) {
@@ -16,7 +16,7 @@ export function DesktopNav({ items, isActive, onActionClick }: DesktopNavProps) 
         item.type === 'action' ? (
           <button
             key={item.path}
-            onClick={() => onActionClick(item)}
+            onClick={() => onActionClick?.(item)}
             className="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
               text-white bg-brown-600 hover:bg-brown-700 dark:bg-accent-500 
               dark:hover:bg-accent-600"

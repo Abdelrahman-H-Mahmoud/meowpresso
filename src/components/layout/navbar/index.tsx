@@ -1,20 +1,29 @@
 'use client';
 
-import React from 'react';
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/Logo';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { CartButton } from '@/components/CartButton';
-import { WaitlistCounter } from '@/components/WaitlistCounter';
-import { Modal } from '@/components/ui/Modal';
-import { SignInContent } from '@/components/auth/SignInContent';
-import { navigationItems, NavItem } from '@/config/navigation';
-import { DesktopNav } from '@/components/navbar/DesktopNav';
-import { UserMenu } from '@/components/navbar/UserMenu';
-import { MobileMenu } from '@/components/navbar/MobileMenu';
+import { navigationItems } from '@/config/navigation';
+
+// Lazy load components with loading states
+const ThemeToggle = dynamic(() => import('@/components/ThemeToggle').then(mod => mod.ThemeToggle), {
+  loading: () => <div className="w-10 h-10" />,
+  ssr: false
+});
+
+const CartButton = dynamic(() => import('@/components/CartButton').then(mod => mod.CartButton), {
+  loading: () => <div className="w-10 h-10" />
+});
+
+const WaitlistCounter = dynamic(() => import('@/components/WaitlistCounter').then(mod => mod.WaitlistCounter));
+const Modal = dynamic(() => import('@/components/ui/Modal').then(mod => mod.Modal));
+const SignInContent = dynamic(() => import('@/components/auth/SignInContent').then(mod => mod.SignInContent));
+const DesktopNav = dynamic(() => import('@/components/navbar/DesktopNav').then(mod => mod.DesktopNav));
+const UserMenu = dynamic(() => import('@/components/navbar/UserMenu').then(mod => mod.UserMenu));
+const MobileMenu = dynamic(() => import('@/components/navbar/MobileMenu').then(mod => mod.MobileMenu));
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -31,18 +40,6 @@ export default function Navbar() {
     return true;
   });
 
-  const handleNavAction = (item: NavItem) => {
-    if (item.type === 'action') {
-      switch (item.path) {
-        case '/brew':
-          // Handle brew action
-          break;
-        default:
-          break;
-      }
-    }
-  };
-
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
@@ -53,7 +50,6 @@ export default function Navbar() {
             <DesktopNav
               items={visibleNavItems}
               isActive={isActive}
-              onActionClick={handleNavAction}
             />
 
             {/* Desktop actions */}
@@ -105,4 +101,4 @@ export default function Navbar() {
       </Modal>
     </>
   );
-}
+} 
